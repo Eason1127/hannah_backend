@@ -27,8 +27,6 @@ share/python-wheels/
 MANIFEST
 
 # PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
 *.manifest
 *.spec
 
@@ -44,3 +42,12 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+
+# Firebase credentials
+ph-sensor-test-firebase-adminsdk-fbsvc-01f596e0c1.json
+
+# YOLO model weights
+*.pt
+
+# Local image datasets
+plantHealth/*.jpg
