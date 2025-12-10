@@ -2,8 +2,8 @@ name: Run ML Predictions
 
 on:
   schedule:
-    - cron: '0 * * * *'   # every hour at minute 0
-  workflow_dispatch:      # allow manual trigger too
+    - cron: '*/5 * * * *'   # every 5 minutes
+  workflow_dispatch:        # allow manual trigger too
 
 jobs:
   run-ml:
@@ -12,23 +12,30 @@ jobs:
     steps:
       # 1️⃣ Checkout code
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       # 2️⃣ Setup Python
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.9'
+          python-version: '3.12'
 
-      # 3️⃣ Install dependencies
+      # 3️⃣ Upgrade pip
+      - name: Upgrade pip
+        run: python -m pip install --upgrade pip
+
+      # 4️⃣ Install dependencies
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          pip install ultralytics firebase-admin pillow joblib pandas
+          if [ -f "requirements.txt" ]; then
+              pip install -r requirements.txt
+          else
+              echo "requirements.txt not found, installing dependencies manually"
+              pip install firebase-admin ultralytics pandas Pillow joblib
+          fi
 
-      # 4️⃣ Run ML script
+      # 5️⃣ Run ML script
       - name: Run ML script
-        # ⚠️ Important: Since your script loops infinitely,
-        # we run it with a timeout (e.g., 55 minutes) to avoid exceeding GitHub Actions limits
-        run: timeout 3300s python main.py
+        # ⚠️ Timeout to prevent Actions job from exceeding limits
+        run: timeout 270s python MLPredictions.py
+
