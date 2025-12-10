@@ -1,0 +1,32 @@
+2025-12-11 02:58:16,890 - INFO - Connected to Firebase RTDB
+2025-12-11 02:58:17,395 - INFO - Water model & scaler loaded.
+2025-12-11 02:58:17,522 - INFO - YOLO models loaded.
+2025-12-11 02:58:17,522 - INFO - Running ML predictions...
+2025-12-11 03:02:30,603 - INFO - Connected to Firebase RTDB
+2025-12-11 03:02:31,075 - INFO - Water model & scaler loaded.
+2025-12-11 03:02:31,178 - INFO - YOLO models loaded.
+2025-12-11 03:02:31,178 - INFO - Running ML predictions...
+2025-12-11 03:05:35,034 - INFO - Connected to Firebase RTDB
+2025-12-11 03:05:35,520 - INFO - Water model & scaler loaded.
+2025-12-11 03:05:35,643 - INFO - YOLO models loaded.
+2025-12-11 03:05:35,644 - INFO - Running ML predictions...
+2025-12-11 03:12:18,103 - INFO - Connected to Firebase RTDB
+2025-12-11 03:12:18,620 - INFO - Water model & scaler loaded.
+2025-12-11 03:12:18,723 - INFO - YOLO models loaded.
+2025-12-11 03:12:18,724 - INFO - Running ML predictions...
+2025-12-11 03:12:18,994 - ERROR - Failed to get data from /water_quality: ('invalid_grant: Invalid JWT Signature.', {'error': 'invalid_grant', 'error_description': 'Invalid JWT Signature.'})
+2025-12-11 03:12:18,995 - WARNING - No water sensor data found.
+2025-12-11 03:12:19,020 - ERROR - Failed to get data from /camera/latest/camA: ('invalid_grant: Invalid JWT Signature.', {'error': 'invalid_grant', 'error_description': 'Invalid JWT Signature.'})
+2025-12-11 03:12:19,021 - WARNING - No image data for camA
+2025-12-11 03:12:19,042 - ERROR - Failed to get data from /camera/latest/camB: ('invalid_grant: Invalid JWT Signature.', {'error': 'invalid_grant', 'error_description': 'Invalid JWT Signature.'})
+2025-12-11 03:12:19,043 - WARNING - No image data for camB
+2025-12-11 03:12:19,044 - INFO - Finished ML predictions.
+[2025-12-11 03:32:37] Connected to Firebase RTDB
+[2025-12-11 03:32:37] Water model & scaler loaded.
+[2025-12-11 03:32:37] YOLO models loaded.
+[2025-12-11 03:32:37] Prediction run started
+[2025-12-11 03:32:39] Water prediction uploaded: {'ph': 13.0774, 'tds': 61.05006, 'potability': 0, 'probability_good': 0.4244033995630533, 'timestamp': 499173}
+[2025-12-11 03:32:39] No image data for camA
+[2025-12-11 03:32:40] No image data for camB
+[2025-12-11 03:32:40] Prediction run finished
+
