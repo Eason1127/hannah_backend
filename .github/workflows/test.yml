@@ -1,39 +1,33 @@
-name: Run ML Predictions
+name: Run Python ML Predictions
 
 on:
-  schedule:
-    - cron: '*/5 * * * *'  # every 5 minutes
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
-  run-ml:
+  ml-predictions:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    env:
+      HANNAH_FIREBASE_JSON: ${{ secrets.HANNAH_FIREBASE_JSON }}
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Setup Python
+      - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.12'
-
-      - name: Upgrade pip
-        run: python -m pip install --upgrade pip
+          python-version: 3.12
 
       - name: Install dependencies
         run: |
-          if [ -f "requirements.txt" ]; then
-              pip install -r requirements.txt
-          else
-              echo "requirements.txt not found, installing dependencies manually"
-              pip install firebase-admin ultralytics pandas Pillow joblib
-          fi
+          python -m pip install --upgrade pip
+          pip install firebase-admin ultralytics pillow pandas joblib
 
-      - name: Set up Firebase credentials
+      - name: Run ML Predictions
         run: |
-          echo "$HANNAH_FIREBASE_JSON" > ph-sensor-test-firebase-adminsdk-fbsvc-55964885eb.json
-        shell: bash
-
-      - name: Run ML script
-        run: timeout 270s python MLPredictions.py
+          python MLPredictions.py
